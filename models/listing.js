@@ -22,7 +22,19 @@ const listingSchema=new mongoose.Schema({
        owner :{
          type :mongoose.Schema.Types.ObjectId,
          ref:"User"
-       }
+       },
+       category :{
+         type:String,
+         enum :["Hostal","Individual"]
+       },
+       room :{
+           type :String,
+           enum :["Single Room","1 BHK","2 BHK","3 BHK"]
+       },
+       city :{
+        type:String,
+        enum :["Indore","Bhopal"]
+       } 
 });
 listingSchema.post("findOneAndDelete",async(listing)=>{
     if(listing){

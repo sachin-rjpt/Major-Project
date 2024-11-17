@@ -25,7 +25,6 @@ app.set("views",path.join(__dirname,"views"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));
-//console.log(process.env);
 
  const store=MongoStore.create({
     mongoUrl :mongoAtlas,
@@ -90,7 +89,6 @@ app.use("*",(req,res,next)=>{
 });
 // middleware
 app.use((err,req,res,next)=>{
-    console.log(err);
     let {status=500,message="something went wrong"}=err;
     res.status(status).render("./listings/error.ejs",{message});
 });

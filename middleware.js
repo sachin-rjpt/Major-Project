@@ -1,5 +1,7 @@
 const Listing =require("./models/listing.js");
 const Review=require("./models/review.js");
+const {listingSchema}=require("./schema.js");
+const {expressError}=require("./utils/expressError.js");
 const isLoggedIn=(req,res,next)=>{
    // console.log(req.path+" ,"+req.originalUrl);
     if(!req.isAuthenticated()){
@@ -9,6 +11,14 @@ const isLoggedIn=(req,res,next)=>{
     }
     next();
 }
+ const validateListing=(req,res,next)=>{
+     let {error}=listingSchema.validate(req.body.listing);
+       console.dir(error);
+     if(error){
+          next(400,error.message);
+     }
+     next();
+ }
 const saveRedirectUrl=(req,res,next)=>{
    if(req.session.redirectUrl){
   res.locals.redirectUrl=req.session.redirectUrl;
@@ -36,4 +46,4 @@ const validateAuthor=async(req,res,next)=>{
       }
       next();
 }
-module.exports={isLoggedIn,saveRedirectUrl,validateOwner,validateAuthor};
+module.exports={isLoggedIn,saveRedirectUrl,validateOwner,validateAuthor,validateListing};

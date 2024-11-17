@@ -5,8 +5,11 @@ const listingSchema=Joi.object({
         description:Joi.string().required(),
         image : Joi.string().allow("",null),
         price:Joi.number().required().min(0),
-        location:Joi.string().required(),
-        country :Joi.string().required()
+        country :Joi.string().required(),
+        category:Joi.string().required(),
+        room :Joi.string().required(),
+        city :Joi.string().required(),
+        location:Joi.string().required()
     }).required()
 });
 const reviewSchema=Joi.object({

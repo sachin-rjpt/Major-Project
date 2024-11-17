@@ -1,5 +1,4 @@
 const Listing=require("../models/listing.js");
-const {listingSchema}=require("../schema.js");
 const expressError=require("../utils/expressError");
 // index route
 module.exports.index=async(req,res)=>{
@@ -22,11 +21,6 @@ module.exports.createform=(req,res)=>{
 };
 // new route
 module.exports.new=async(req,res,next)=>{
-    // validateSchema(req);
-    let {error}= listingSchema.validate(req.body);
-    if(error){
-       throw new expressError(400,error);
-    }
     let url=req.file.path;
     let filename=req.file.filename;
     req.body.listing.owner=req.user._id;
@@ -59,11 +53,6 @@ module.exports.editform=async(req,res)=>{
 };
 // edit  route 
 module.exports.edit=async(req,res)=>{
-   // validateSchema(req);
-   let {error}= listingSchema.validate(req.body);
-   if(error){
-      throw new expressError(400,error);
-   }
     let {id}=req.params;
    let listing=await Listing.findByIdAndUpdate(id,{...req.body.listing});
    if(typeof req.file!=="undefined"){

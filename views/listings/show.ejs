@@ -10,8 +10,9 @@
               <p class="card-text">
                  <p>Owned By <%=data.owner.username%></p>
                   <%=data.description%> <br>
-                &#8377;<%=data.price.toLocaleString("en-IN")%> <br>
-                <%=data.location%> <br>
+                &#8377;<%=data.price.toLocaleString("en-IN")%>/month <br>
+                <%=data.room%> &nbsp;, <%=data.category%> <br>
+                <%=data.location%> &nbsp;,<%=data.city%> <br>
                 <%=data.country%> <br>
               </p>
                <% if(currUser&&currUser._id.equals(data.owner._id)) {%>

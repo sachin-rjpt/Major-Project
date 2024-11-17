@@ -2,7 +2,7 @@
 <body>
      <div class="row mt-4">
      <div class="col-8 offset-2">
-     <h3>Create a New Listing</h3>
+     <h3>Add your place details</h3>
       <form method="post" action="/Listings" id="yourFormId" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -23,18 +23,45 @@
           <div class="row">
           <div class="mb-3 col-md-4">
            <label for="price" class="form-label">Price</label> 
-         <input  name="listing[price]" class="form-control" required placeholder="1200">
+         <input  name="listing[price]" class="form-control" required placeholder="4000">
          <div class="invalid-feedback">please enter valid price</div>
          </div>
          <div class="mb-3 col-md-8">
             <label for="country" class="form-label">Country</label>
-           <input type="text" name="listing[country]" placeholder="India" required class="form-control">
-           <div class="invalid-feedback">please enter valid country</div>
+            <select name="listing[country] " class="form-control">
+              <option value="India" selected>India</option>
+            </select>
            </div>
           </div> 
+           <div class="row">
+          <div class="mb-3 col-md-4">
+              <label for="category" class="form-label">Category</label>
+              <select name="listing[category]" class="form-control">
+                <option value="Hostal">Hostal</option>
+                <option value="Individual">Individual</option>
+              </select>
+          </div>
+          <div class="mb-3 col-md-8">
+            <label for="room" class="form-label">Type</label>
+            <select name="listing[room]" class="form-control">
+              <option value="Single Room">Single Room</option>
+              <option value="1 BHK">1 BHK</option>
+              <option value="2 BHK">2 BHK</option>
+              <option value="3 BHK">3 BHK</option>
+            </select>
+        </div>
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <select name="listing[city]" class="form-control">
+            <option value="Indore">Indore</option>
+            <option value="Bhopal">Bhopal</option>
+          </select>
+      </div>
+         
          <div class="mb-3">
          <label for="location" class="form-label">Location</label>
-         <input type="text" name="listing[location]" required placeholder="jaipur,Rajsthan" class="form-control">
+         <input type="text" name="listing[location]" required placeholder=" Ex. Ward 03,Anand Nagar, krishna villa" class="form-control">
          <div class="invalid-feedback">please enter valid Location</div>
          </div>
          <button class="btn btn-dark mb-3">Add</button>
