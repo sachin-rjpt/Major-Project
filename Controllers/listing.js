@@ -17,7 +17,7 @@ module.exports.index=async(req,res)=>{
 };
 // create form 
 module.exports.createform=(req,res)=>{
-   res.render("./views/listings/new.ejs");
+   res.render("./listings/new.ejs");
 };
 // new route
 module.exports.new=async(req,res,next)=>{
